@@ -45,7 +45,7 @@ module.exports = robot => {
 	// ------------------------------------------------------------------------
 	// Regex matching entry point.
 	// ------------------------------------------------------------------------
-	robot.respond(SHOW_ENV, (res) => {
+	robot.respond(SHOW_ENV, {id: 'hubot.show.environment'}, (res) => {
 		// See if a variable name filter was provided.
 		let matchString = '';
 		if (res.match.length > 1) {
