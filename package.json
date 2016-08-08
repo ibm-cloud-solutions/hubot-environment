@@ -1,0 +1,58 @@
+{
+  "name": "hubot-environment",
+  "version": "0.0.1",
+  "description": "hubot-environment",
+  "main": "index.js",
+  "respository": {
+    "url": "https://github.com/ibm-cloud-solutions/hubot-environment",
+    "type": "git"
+  },
+  "scripts": {
+    "start": "source config/env && hubot -a shell",
+    "slack": "source config/env && hubot -a slack",
+    "facebook": "source config/env && hubot -a fb",
+    "lint": "eslint src/**/*.js test/*.js index.js",
+    "test": ". test/.env && mocha test",
+    "abc-coverage": ". test/.env && istanbul cover -x '**/coverage/**' -x '**/tools/**' --include-all-sources --report lcov --report cobertura --report text --dir ./gh-pages/coverage _mocha -- test",
+	 "coverage": ". test/.env && istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "release": "node tools/publish"
+  },
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "bluemix",
+    "cloud",
+    "slack"
+  ],
+  "author": "ibm-cloud-solutions",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "coveralls": "^2.11.12",
+    "eslint": "^2.9.0",
+    "eslint-config-strongloop": "^2.0.1",
+    "hubot": "^2.19.0",
+    "hubot-help": "^0.2.0",
+    "hubot-ibmcloud-formatter": ">=0.0.10",
+    "hubot-shell": "^1.0.2",
+    "hubot-slack": "^3.4.2",
+    "hubot-test-helper": "^1.4.4",
+    "istanbul": "0.4.0",
+    "istanbul-cobertura-badger": "1.2.1",
+    "mocha": "^2.4.5",
+    "shelljs": "^0.7.0"
+  },
+  "peerDependencies": {
+    "hubot": "^2.19.0"
+  },
+  "engines": {
+    "node": ">= 4.2.0"
+  },
+  "files": [
+    "src",
+    "index.js"
+  ],
+  "dependencies": {
+    "i18n-2": "*"
+  }
+}
