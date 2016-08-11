@@ -164,6 +164,22 @@ describe('Testing environment.js', function() {
 			});
 			room.user.say('mimiron', '@hubot environment MY').then();
 		});
+
+		it('should present subset list with SALT obscured', function(done) {
+			process.env = {
+				MY_SALT: 'value1',
+				MY_NAME: 'value11',
+				var2: 'value2'
+			};
+			room.robot.on('ibmcloud.formatter', function(event) {
+				expect(event.message).to.contain('Here is the subset');
+				expect(event.message).to.contain('\nMY_SALT=********************');
+				expect(event.message).to.contain('\nMY_NAME=value11');
+				expect(event.message).to.not.contain('var2');
+				done();
+			});
+			room.user.say('mimiron', '@hubot environment MY').then();
+		});
 	});
 
 });

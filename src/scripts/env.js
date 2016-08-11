@@ -40,7 +40,7 @@ const i18n = new (require('i18n-2'))({
 // At some point we need to toggle this setting based on some user input.
 i18n.setLocale('en');
 
-const SENSITIVE_DATA_ENV = ['PASSWORD', 'TOKEN', 'SECRET', 'KEY', 'ACCOUNTS'];
+const SENSITIVE_DATA_ENV = ['PASSWORD', 'SALT', 'TOKEN', 'SECRET', 'KEY', 'ACCOUNTS'];
 
 module.exports = robot => {
 
