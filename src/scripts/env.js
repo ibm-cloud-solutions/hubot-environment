@@ -40,6 +40,8 @@ const i18n = new (require('i18n-2'))({
 // At some point we need to toggle this setting based on some user input.
 i18n.setLocale('en');
 
+const SENSITIVE_DATA_ENV = ['PASSWORD', 'TOKEN', 'SECRET', 'KEY', 'ACCOUNTS'];
+
 module.exports = robot => {
 
 	// ------------------------------------------------------------------------
@@ -65,8 +67,18 @@ module.exports = robot => {
 						// Found content, so need a newline before adding another.
 						envList += '\n';
 					}
-					// Add the env varialbe.
-					envList += key + '=' + process.env[key];
+					// Add the env variable.
+					let data = process.env[key];
+					if (SENSITIVE_DATA_ENV.some((currentValue, index) => {
+						let sensitive = false;
+						if (key.toUpperCase().indexOf(currentValue) >= 0) {
+							sensitive = true;
+						}
+						return sensitive;
+					})) {
+						data = '********************';
+					}
+					envList += key + '=' + data;
 				}
 			}
 		}
