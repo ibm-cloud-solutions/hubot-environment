@@ -76,7 +76,7 @@ module.exports = robot => {
 						}
 						return sensitive;
 					})) {
-						data = '********************';
+						data = '####################';
 					}
 					envList += key + '=' + data;
 				}
