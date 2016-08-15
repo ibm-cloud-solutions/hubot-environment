@@ -49,7 +49,7 @@ module.exports = robot => {
 	// ------------------------------------------------------------------------
 	// Show help
 	// ------------------------------------------------------------------------
-	robot.respond(ENV_HELP, {id: 'hubot.show.environment'}, (res) => {
+	robot.respond(ENV_HELP, {id: 'hubot.help.environment'}, (res) => {
 		robot.logger.debug(`${TAG}: hubot-environment, help`);
 		let help = '';
 		help += robot.name + ' environment show - ' + i18n.__('help.env.show') + '\n';
@@ -68,7 +68,7 @@ module.exports = robot => {
 	// ------------------------------------------------------------------------
 	// Show a filtered list of env variables.
 	// ------------------------------------------------------------------------
-	robot.respond(ENV_FILTER, {id: 'hubot.show.environment'}, (res) => {
+	robot.respond(ENV_FILTER, {id: 'hubot.filter.environment'}, (res) => {
 		let matchString = res.match[1].trim();
 		robot.logger.debug(`${TAG}: hubot-environment, matchString=${matchString}`);
 		processEnvRequest(res, matchString);
