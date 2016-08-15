@@ -1,5 +1,7 @@
 {
 	"full.env.list": "Here is the full list of environment variables:\n%s",
 	"matched.env.list": "Here is the subset of the environment variables matching your filter, *%s*:\n%s",
-	"no.matches.found": "None of the environment variables contain the string *%s*."
+	"no.matches.found": "None of the environment variables contain the string *%s*.",
+	"help.env.show": "Show the full set of environment variables.",
+	"help.env.filter": "Show environment variables including the given string."
 }
