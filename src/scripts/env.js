@@ -102,7 +102,7 @@ module.exports = robot => {
 					})) {
 						data = '####################';
 					}
-					envList += key + '=' + data;
+					envList += '*' + key + '*=' + data;
 				}
 			}
 		}

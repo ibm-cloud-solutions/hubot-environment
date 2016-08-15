@@ -34,8 +34,8 @@ describe('Testing environment.js', function() {
 			};
 			room.robot.on('ibmcloud.formatter', function(event) {
 				expect(event.message).to.contain('Here is the full list');
-				expect(event.message).to.contain('\nvar1=value1');
-				expect(event.message).to.contain('\nvar2=value2');
+				expect(event.message).to.contain('\n*var1*=value1');
+				expect(event.message).to.contain('\n*var2*=value2');
 				done();
 			});
 			room.user.say('mimiron', '@hubot environment show').then();
@@ -54,8 +54,8 @@ describe('Testing environment.js', function() {
 			};
 			room.robot.on('ibmcloud.formatter', function(event) {
 				expect(event.message).to.contain('Here is the subset');
-				expect(event.message).to.contain('\nvar1=value1');
-				expect(event.message).to.contain('\nvar11=value11');
+				expect(event.message).to.contain('\n*var1*=value1');
+				expect(event.message).to.contain('\n*var11*=value11');
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
@@ -75,8 +75,8 @@ describe('Testing environment.js', function() {
 			};
 			room.robot.on('ibmcloud.formatter', function(event) {
 				expect(event.message).to.contain('None of the environment variables contain the string *abc*');
-				expect(event.message).to.not.contain('\nvar1=value1');
-				expect(event.message).to.not.contain('\nvar11=value11');
+				expect(event.message).to.not.contain('\n*var1*=value1');
+				expect(event.message).to.not.contain('\n*var11*=value11');
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
@@ -93,8 +93,8 @@ describe('Testing environment.js', function() {
 			};
 			room.robot.on('ibmcloud.formatter', function(event) {
 				expect(event.message).to.contain('Here is the subset');
-				expect(event.message).to.contain('\nMY_PASSWORD=####################');
-				expect(event.message).to.contain('\nMY_NAME=value11');
+				expect(event.message).to.contain('\n*MY_PASSWORD*=####################');
+				expect(event.message).to.contain('\n*MY_NAME*=value11');
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
@@ -109,8 +109,8 @@ describe('Testing environment.js', function() {
 			};
 			room.robot.on('ibmcloud.formatter', function(event) {
 				expect(event.message).to.contain('Here is the subset');
-				expect(event.message).to.contain('\nMY_TOKEN=####################');
-				expect(event.message).to.contain('\nMY_NAME=value11');
+				expect(event.message).to.contain('\n*MY_TOKEN*=####################');
+				expect(event.message).to.contain('\n*MY_NAME*=value11');
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
@@ -125,8 +125,8 @@ describe('Testing environment.js', function() {
 			};
 			room.robot.on('ibmcloud.formatter', function(event) {
 				expect(event.message).to.contain('Here is the subset');
-				expect(event.message).to.contain('\nMY_SECRET=####################');
-				expect(event.message).to.contain('\nMY_NAME=value11');
+				expect(event.message).to.contain('\n*MY_SECRET*=####################');
+				expect(event.message).to.contain('\n*MY_NAME*=value11');
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
@@ -141,8 +141,8 @@ describe('Testing environment.js', function() {
 			};
 			room.robot.on('ibmcloud.formatter', function(event) {
 				expect(event.message).to.contain('Here is the subset');
-				expect(event.message).to.contain('\nMYKEY=####################');
-				expect(event.message).to.contain('\nMY_NAME=value11');
+				expect(event.message).to.contain('\n*MYKEY*=####################');
+				expect(event.message).to.contain('\n*MY_NAME*=value11');
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
@@ -157,8 +157,8 @@ describe('Testing environment.js', function() {
 			};
 			room.robot.on('ibmcloud.formatter', function(event) {
 				expect(event.message).to.contain('Here is the subset');
-				expect(event.message).to.contain('\nMY_ACCOUNTS=####################');
-				expect(event.message).to.contain('\nMY_NAME=value11');
+				expect(event.message).to.contain('\n*MY_ACCOUNTS*=####################');
+				expect(event.message).to.contain('\n*MY_NAME*=value11');
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
@@ -173,8 +173,8 @@ describe('Testing environment.js', function() {
 			};
 			room.robot.on('ibmcloud.formatter', function(event) {
 				expect(event.message).to.contain('Here is the subset');
-				expect(event.message).to.contain('\nMY_SALT=####################');
-				expect(event.message).to.contain('\nMY_NAME=value11');
+				expect(event.message).to.contain('\n*MY_SALT*=####################');
+				expect(event.message).to.contain('\n*MY_NAME*=value11');
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
