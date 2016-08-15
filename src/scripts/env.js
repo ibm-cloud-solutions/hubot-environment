@@ -18,7 +18,9 @@
  */
 'use strict';
 
-const SHOW_ENV = /environment(.*)/i;
+const ENV_FILTER = /environment\sfilter\s(.*)/i;
+const ENV_HELP = /environment\shelp/i;
+const ENV_SHOW = /environment\sshow/i;
 
 var path = require('path');
 var TAG = path.basename(__filename);
@@ -45,16 +47,38 @@ const SENSITIVE_DATA_ENV = ['PASSWORD', 'SALT', 'TOKEN', 'SECRET', 'KEY', 'ACCOU
 module.exports = robot => {
 
 	// ------------------------------------------------------------------------
-	// Regex matching entry point.
+	// Show help
 	// ------------------------------------------------------------------------
-	robot.respond(SHOW_ENV, {id: 'hubot.show.environment'}, (res) => {
-		// See if a variable name filter was provided.
-		let matchString = '';
-		if (res.match.length > 1) {
-			matchString = res.match[1].trim();
-		}
-		robot.logger.debug(`${TAG}: hubot-environment, matchString=${matchString}`);
+	robot.respond(ENV_HELP, {id: 'hubot.show.environment'}, (res) => {
+		robot.logger.debug(`${TAG}: hubot-environment, help`);
+		let help = '';
+		help += robot.name + ' environment show - ' + i18n.__('help.env.show') + '\n';
+		help += robot.name + ' environment filter [string] - ' + i18n.__('help.env.filter') + '\n';
+		robot.emit('ibmcloud.formatter', { response: res, message: help });
+	});
 
+	// ------------------------------------------------------------------------
+	// Show all env variables.
+	// ------------------------------------------------------------------------
+	robot.respond(ENV_SHOW, {id: 'hubot.show.environment'}, (res) => {
+		robot.logger.debug(`${TAG}: hubot-environment, show all`);
+		processEnvRequest(res, '');
+	});
+
+	// ------------------------------------------------------------------------
+	// Show a filtered list of env variables.
+	// ------------------------------------------------------------------------
+	robot.respond(ENV_FILTER, {id: 'hubot.show.environment'}, (res) => {
+		let matchString = res.match[1].trim();
+		robot.logger.debug(`${TAG}: hubot-environment, matchString=${matchString}`);
+		processEnvRequest(res, matchString);
+	});
+
+	// ------------------------------------------------------------------------
+	// Common processor of requests.
+	// ------------------------------------------------------------------------
+	function processEnvRequest(res, matchString) {
+		robot.logger.debug(`${TAG}: hubot-environment, matchString=${matchString}`);
 		// Iterate the list of environment variables and gather the response.
 		let envList = '';
 		for (var key in process.env) {
@@ -98,5 +122,6 @@ module.exports = robot => {
 			message = i18n.__('no.matches.found', matchString);
 		}
 		robot.emit('ibmcloud.formatter', { response: res, message: message });
-	});
+	}
+
 };

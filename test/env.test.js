@@ -38,7 +38,7 @@ describe('Testing environment.js', function() {
 				expect(event.message).to.contain('\nvar2=value2');
 				done();
 			});
-			room.user.say('mimiron', '@hubot environment').then();
+			room.user.say('mimiron', '@hubot environment show').then();
 		});
 	});
 
@@ -59,7 +59,7 @@ describe('Testing environment.js', function() {
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
-			room.user.say('mimiron', '@hubot environment var1').then();
+			room.user.say('mimiron', '@hubot environment filter var1').then();
 		});
 	});
 
@@ -80,7 +80,7 @@ describe('Testing environment.js', function() {
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
-			room.user.say('mimiron', '@hubot environment abc').then();
+			room.user.say('mimiron', '@hubot environment filter abc').then();
 		});
 	});
 
@@ -98,7 +98,7 @@ describe('Testing environment.js', function() {
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
-			room.user.say('mimiron', '@hubot environment MY').then();
+			room.user.say('mimiron', '@hubot environment filter MY').then();
 		});
 
 		it('should present subset list with TOKEN obscured', function(done) {
@@ -114,7 +114,7 @@ describe('Testing environment.js', function() {
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
-			room.user.say('mimiron', '@hubot environment MY').then();
+			room.user.say('mimiron', '@hubot environment filter MY').then();
 		});
 
 		it('should present subset list with SECRET obscured', function(done) {
@@ -130,7 +130,7 @@ describe('Testing environment.js', function() {
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
-			room.user.say('mimiron', '@hubot environment MY').then();
+			room.user.say('mimiron', '@hubot environment filter MY').then();
 		});
 
 		it('should present subset list with KEY obscured', function(done) {
@@ -146,7 +146,7 @@ describe('Testing environment.js', function() {
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
-			room.user.say('mimiron', '@hubot environment MY').then();
+			room.user.say('mimiron', '@hubot environment filter MY').then();
 		});
 
 		it('should present subset list with ACCOUNTS obscured', function(done) {
@@ -162,7 +162,7 @@ describe('Testing environment.js', function() {
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
-			room.user.say('mimiron', '@hubot environment MY').then();
+			room.user.say('mimiron', '@hubot environment filter MY').then();
 		});
 
 		it('should present subset list with SALT obscured', function(done) {
@@ -178,8 +178,19 @@ describe('Testing environment.js', function() {
 				expect(event.message).to.not.contain('var2');
 				done();
 			});
-			room.user.say('mimiron', '@hubot environment MY').then();
+			room.user.say('mimiron', '@hubot environment filter MY').then();
 		});
+
+		it('should present the help', function(done) {
+			room.robot.on('ibmcloud.formatter', function(event) {
+				let expected = 'hubot environment show - Show the full set of environment variables.\n'
+					+ 'hubot environment filter [string] - Show environment variables including the given string.\n';
+				expect(event.message).to.contain(expected);
+				done();
+			});
+			room.user.say('mimiron', '@hubot environment help').then();
+		});
+
 	});
 
 });
