@@ -7,6 +7,4 @@ script:
   - 'npm run lint'
   - 'npm run coverage'
 notifications:
-  slack: ${SLACK_TOKEN}
-
-    Contact GitHub API Training Shop Blog About
+  slack: 'ibm-cloudplatform:${SLACK_TOKEN}'
