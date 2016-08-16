@@ -1,6 +1,6 @@
 {
   "name": "hubot-environment",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "hubot-environment",
   "main": "index.js",
   "respository": {
