@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - '4.2'
+- '4.2'
 install:
-  - 'npm install'
+- npm install
 script:
-  - 'npm run lint'
-  - 'npm run coverage'
+- npm run lint
+- npm run coverage
 notifications:
-  slack: 'ibm-cloudplatform:${SLACK_TOKEN}'
-  webhooks: http://cloud-solutions-travis.mybluemix.net/notifications
+  slack:
+    secure: EnfmVNo60Nf/qRyzBJR97dQC0gkdiGL1qZppje0NhW59IcMQhhPFYvbwRsgDxsO1EsQf4hqbhzNqO5f1LxwpRiiZ5LnIZRWZ+z32lCj7ozEgfFoD3qo0Nz7AFGss6dzVFRSfafP9rkRpPIek7FxeP8GvaUlswY5aNkEjt2zEI7b4kG6qZ6yECZNvE+vnOHF5rKsquuepKKJpQZhs4A1FVPCDLH7aTnSztED5o8pySm0yB1V5nQQgXQfjzOGUGbU1snfV3zZcUe1ygoiFtC2vr+gi2rMc7EPXJYWkpYSMoz0x3bZZJa3p4fT4zqOOOpaJmaa+4eZNmnL/AHot582+BuUNpco6LJWJ7NXN1hFxXKaiw1P4uy7nnH79W0sX58V5YLSxSUNlDpBGMX0cAglbow4p5K6quh2CLmVpAGmbM1NjwMaB6jP/lb6kNCKHZIramSmT9OyuBGhxfSCMwwK8zqBPDVR9Eze2gSX6ED2ojaL0TbDLOGWff9gU/TRupMRgS3w/yofnXTqIennkZXN/UW+Moe8SumIL8QD9SP5XYioQS0nbJhr/Zpu+UOAvLaNdh2VyeN2gaEv3xYpI4mMdWGYIsnERK8FNxk/0QaEbTpbclaxVaWwRArILC9sIgmPpAS4l0eTfDwWd5SrvSQDfzTnaC0gT7/JSfKdpke4wx/M=
