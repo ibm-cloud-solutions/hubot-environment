@@ -4,8 +4,8 @@
 // Configuration:
 //
 // Commands:
-//   hubot environment - Shows the current running environment variables
-//   hubot environment <text> - Shows environment variables containing <text> in their name
+//   hubot environment show - Show the full set of environment variables.
+//   hubot environment filter <string> - Show environment variables including the given string.
 //
 // Author:
 //	lanzen
