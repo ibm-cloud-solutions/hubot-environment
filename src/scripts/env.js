@@ -22,8 +22,8 @@ const ENV_FILTER = /environment\sfilter\s(.*)/i;
 const ENV_HELP = /environment\shelp/i;
 const ENV_SHOW = /environment\sshow/i;
 
-var path = require('path');
-var TAG = path.basename(__filename);
+const path = require('path');
+const TAG = path.basename(__filename);
 
 // --------------------------------------------------------------
 // i18n (internationalization)
@@ -81,7 +81,7 @@ module.exports = robot => {
 		robot.logger.debug(`${TAG}: hubot-environment, matchString=${matchString}`);
 		// Iterate the list of environment variables and gather the response.
 		let envList = '';
-		for (var key in process.env) {
+		for (let key in process.env) {
 			// Filter out variables that have no value.
 			if (process.env.hasOwnProperty(key) && process.env[key] !== '') {
 				// See if there is a match.
