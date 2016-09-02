@@ -44,7 +44,8 @@
     "shelljs": "^0.7.0"
   },
   "peerDependencies": {
-    "hubot": "^2.19.0"
+    "hubot": "^2.19.0",
+    "i18n-2": "*"
   },
   "engines": {
     "node": ">= 4.2.0"
@@ -53,7 +54,5 @@
     "src",
     "index.js"
   ],
-  "dependencies": {
-    "i18n-2": "*"
-  }
+  "dependencies": {}
 }
