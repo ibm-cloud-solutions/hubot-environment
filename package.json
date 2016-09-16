@@ -3,10 +3,6 @@
   "version": "0.0.9",
   "description": "hubot-environment",
   "main": "index.js",
-  "respository": {
-    "url": "https://github.com/ibm-cloud-solutions/hubot-environment",
-    "type": "git"
-  },
   "scripts": {
     "start": "source config/env && hubot -a shell",
     "slack": "source config/env && hubot -a slack",
